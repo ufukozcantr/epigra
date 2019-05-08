@@ -11,6 +11,7 @@ use Modules\Match\Entities\MatchUser;
 use Modules\Match\Entities\MatchSet;
 use Modules\Question\Entities\Question;
 use DB;
+use Spatie\Activitylog\Models\Activity;
 
 class HomeController extends Controller
 {
@@ -138,12 +139,17 @@ class HomeController extends Controller
                 if(trim($question->data->answer) == trim($answer))
                     $point = 100;
 
-                Answer::create([
+                $answer = Answer::create([
                     'question_id' => $id,
                     'match_id' => $request->match_id,
                     'match_set_id' => $request->match_set_id,
                     'point' => $point
                 ]);
+
+                activity()
+                    ->causedBy(Auth::user())
+                    ->withProperties([$request->match_id.'-'.$request->match_set_id => $point])
+                    ->log('ansid'.$answer->id.'-quid'.$id.'-mid'.$request->match_id.'-msid'.$request->match_set_id.'-point:'.$point);
             }
         }
 

@@ -24,5 +24,6 @@ return [
     'new_match' => 'New Match',
     'will_sets' => 'Will Sets',
     'win_match' => 'Win Match',
+    'match_user' => 'Match User',
 
 ];
