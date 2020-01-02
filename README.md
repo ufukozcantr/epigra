@@ -4,8 +4,8 @@
 <h1>Run</h1>
 <div class="highlight highlight-source-shell">
     <pre>cd epigra/Modules/Question</pre>
-    <pre>cd npm install</pre>
-    <pre>cd npm run dev</pre>
+    <pre>npm install</pre>
+    <pre>npm run dev</pre>
 </div>
 <h1>Install</h1>
 <div class="highlight highlight-source-shell">
